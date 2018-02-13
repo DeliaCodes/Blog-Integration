@@ -1,0 +1,6 @@
+{
+  "esversion": 6,
+  "require": true,
+  "console": true,
+  "module": true
+}
