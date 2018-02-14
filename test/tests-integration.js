@@ -59,3 +59,20 @@ describe('Blog Post API Resource', () => {
     closeServer();
   });
 });
+
+describe('GET endpoint', () => {
+  it('return existing blog posts', () => {
+    let res;
+    return chai.request(app)
+      .get('/blog-posts')
+      .then((_res) => {
+        res = _res;
+        expect(res).to.have.status(200);
+        expect(res.body.blog - posts).to.have.length.of.at.least(1);
+        return BlogPost.count();
+        .then((count) => {
+          expect(res.body.blog - posts).to.have.length.of(count);
+        });
+      });
+  });
+});
