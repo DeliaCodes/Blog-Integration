@@ -23,6 +23,7 @@ const {
 const seedBlogData = () => {
   const seedData = [];
 
+  //convert this to map
   for (let i = 1; i <= 10; i++) {
     seedData.push(generateBlogPostData());
   }
@@ -41,3 +42,20 @@ const tearDownDb = () => {
   console.warn('Deleting Database');
   return mongoose.connection.dropDatabase();
 };
+
+describe('Blog Post API Resource', () => {
+
+  before(() => {
+    runServer(TEST_DATABASE_URL);
+  });
+  beforeEach(() => {
+    seedBlogData();
+  });
+
+  afterEach(() => {
+    tearDownDb();
+  });
+  after(() => {
+    closeServer();
+  });
+});
