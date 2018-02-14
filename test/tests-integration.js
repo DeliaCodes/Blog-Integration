@@ -36,4 +36,9 @@ const generateBlogPostData = () => {
     content: faker.lorem,
     author: faker.author
   };
-}
+};
+
+const tearDownDb = () => {
+  console.warn('Deleting Database');
+  return mongoose.connection.dropDatabase();
+};
