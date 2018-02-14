@@ -69,10 +69,10 @@ describe('GET endpoint', () => {
         res = _res;
         expect(res).to.have.status(200);
         expect(res.body.blog - posts).to.have.length.of.at.least(1);
-        return BlogPost.count();
-        .then((count) => {
-          expect(res.body.blog - posts).to.have.length.of(count);
-        });
+        return BlogPost.count()
+          .then((count) => {
+            expect(res.body.blog - posts).to.have.length.of(count);
+          });
       });
   });
 });
