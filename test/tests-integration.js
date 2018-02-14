@@ -31,10 +31,9 @@ const seedBlogData = () => {
 
 const generateBlogPostData = () => {
   return {
-    //come back to this
-    title: faker.title,
-    content: faker.lorem,
-    author: faker.author
+    title: faker.lorem.sentence(),
+    content: faker.lorem.paragraph(),
+    author: faker.name.findName()
   };
 };
 
